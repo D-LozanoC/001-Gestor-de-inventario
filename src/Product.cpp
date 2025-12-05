@@ -1,7 +1,9 @@
+#include <iomanip>
 #include <iostream>
 #include "Product.h"
 
 using std::string;
+using std::setw;
 
 // Constructor
 
@@ -27,13 +29,15 @@ void Product::setPrice(double p) { price = p; }
 
 std::ostream &operator<<(std::ostream &os, const Product &p)
 {
-    os << "Product {\n"
-       << "    Id: " << p.id << '\n'
-       << "    Name: " << p.name << '\n'
-       << "    Category: " << p.category << '\n'
-       << "    Quantity: " << p.quantity << '\n'
-       << "    Price: " << p.price << '\n'
-       << "}";
+    const string cyan = "\033[36m";
+    const string reset = "\033[0m";
+
+    os << cyan << "| " << reset << std::left
+       << setw(5) << p.id << cyan << " | " << reset
+       << setw(18) << p.name << cyan << " | " << reset
+       << setw(13) << p.category << cyan << " | " << reset
+       << setw(8) << p.quantity << cyan << " | " << reset
+       << setw(8) << p.price << cyan << " |" << reset;
 
     return os;
 }

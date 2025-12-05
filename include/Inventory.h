@@ -21,6 +21,6 @@ public:
     const Product *find(int id) const;
     const std::map<int, Product> &list() const;
     // Files
-    bool loadFromFile(const std::string &name);
-    bool saveToFile(const std::string &name);
+    bool loadFromFile(const std::string &path);
+    bool saveToFile(const std::string &path);
 };
